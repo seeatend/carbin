@@ -1,0 +1,52 @@
+// buttons
+button
+  display: inline-block
+  -webkit-apperance: none
+  border: 0
+  box-shadow: none
+  &:focus
+    outline: none
+
+.btn
+  display: inline-block
+  position: relative
+  text-align: center
+  cursor: pointer
+  background: $colorBlue
+  color: white
+  border-radius: 3px
+  line-height: 1
+  font-weight: 500
+  transition: .25s $ease
+  &:focus, &:active
+    outline: none
+  &--block
+    display: block
+    width: 100%
+  &--small
+    font-size: 12px
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,0.15)
+    padding: 11px 25px 9px
+  &--huge
+    font-size: 13px
+    padding: 21px 40px 19px
+  &--mega
+    font-size: 14px
+    padding: 27px 40px 23px
+    color: rgba(white, .7)
+    span
+      color: white
+  &:hover
+    background: $colorGreen
+    color: white
+    box-shadow: none
+
+  &--iconed
+    display: flex
+    align-items: center
+    justify-content: center
+    .ico
+      overflow: visible
+      margin-left: 15px
+      &-next-arrow
+        font-size: 20px

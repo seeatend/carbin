@@ -1,0 +1,47 @@
+.ui-group
+  position: relative
+  margin-bottom: 35px
+  label
+    display: block
+    font-size: 16px
+    color: $fontColorGray
+    line-height: 1.85
+  input
+    -webkit-apperance: none
+    display: block
+    font-family: $defaultFamily
+    width: 100%
+    background: white
+    border-radius: 3px
+    border: 1px solid rgba($fontColorGray, .5)
+    font-size: 14px
+    color: $fontColorGray
+    padding: 22px 15px
+    transition: .25s $ease
+    &::placeholder
+      color: rgba($fontColorGray, .5)
+    &:focus
+      border-color: $colorBlue
+  &.has-error
+    input, textarea
+      border-color: $colorRed
+
+.ui-input-validation
+  position: absolute
+  bottom: -20px
+  left: 0
+  color: tomato
+  // margin-top: 10px
+  font-size: 13px
+  text-align: left
+
+.ui-validation-status
+  position: absolute
+  size: 6px
+  right: 10px
+  border-radius: 50%
+  top: 27px
+  &.green
+    background: $colorGreen
+  &.red
+    background: $colorRed

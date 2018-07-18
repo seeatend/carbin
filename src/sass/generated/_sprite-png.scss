@@ -1,0 +1,249 @@
+$sprite: (
+	cabin-logo: (
+		offset-x: -151px,
+		offset-y: -184px,
+		width: 111px,
+		height: 27px,
+		total-width: 429px,
+		total-height: 285px,
+		image: '../images/sprite.png'
+	),
+	clientLogo-bbounce: (
+		offset-x: -330px,
+		offset-y: 0px,
+		width: 99px,
+		height: 33px,
+		total-width: 429px,
+		total-height: 285px,
+		image: '../images/sprite.png'
+	),
+	clientLogo-canny: (
+		offset-x: 0px,
+		offset-y: -75px,
+		width: 154px,
+		height: 38px,
+		total-width: 429px,
+		total-height: 285px,
+		image: '../images/sprite.png'
+	),
+	clientLogo-elements: (
+		offset-x: -330px,
+		offset-y: -114px,
+		width: 94px,
+		height: 28px,
+		total-width: 429px,
+		total-height: 285px,
+		image: '../images/sprite.png'
+	),
+	clientLogo-grain: (
+		offset-x: -80px,
+		offset-y: -225px,
+		width: 111px,
+		height: 32px,
+		total-width: 429px,
+		total-height: 285px,
+		image: '../images/sprite.png'
+	),
+	clientLogo-poh: (
+		offset-x: -330px,
+		offset-y: -152px,
+		width: 42px,
+		height: 51px,
+		total-width: 429px,
+		total-height: 285px,
+		image: '../images/sprite.png'
+	),
+	clientLogo-seventeen: (
+		offset-x: -129px,
+		offset-y: -123px,
+		width: 97px,
+		height: 34px,
+		total-width: 429px,
+		total-height: 285px,
+		image: '../images/sprite.png'
+	),
+	logo-ACCA: (
+		offset-x: -243px,
+		offset-y: 0px,
+		width: 77px,
+		height: 77px,
+		total-width: 429px,
+		total-height: 285px,
+		image: '../images/sprite.png'
+	),
+	logo-ACRA: (
+		offset-x: 0px,
+		offset-y: -123px,
+		width: 119px,
+		height: 51px,
+		total-width: 429px,
+		total-height: 285px,
+		image: '../images/sprite.png'
+	),
+	logo-ISCA: (
+		offset-x: 0px,
+		offset-y: -184px,
+		width: 141px,
+		height: 31px,
+		total-width: 429px,
+		total-height: 285px,
+		image: '../images/sprite.png'
+	),
+	logo-Xero: (
+		offset-x: -118px,
+		offset-y: 0px,
+		width: 115px,
+		height: 53px,
+		total-width: 429px,
+		total-height: 285px,
+		image: '../images/sprite.png'
+	),
+	optionBox: (
+		offset-x: -394px,
+		offset-y: -43px,
+		width: 28px,
+		height: 29px,
+		total-width: 429px,
+		total-height: 285px,
+		image: '../images/sprite.png'
+	),
+	pricing-compliance: (
+		offset-x: 0px,
+		offset-y: -225px,
+		width: 70px,
+		height: 60px,
+		total-width: 429px,
+		total-height: 285px,
+		image: '../images/sprite.png'
+	),
+	pricing-corporate: (
+		offset-x: -330px,
+		offset-y: -43px,
+		width: 54px,
+		height: 61px,
+		total-width: 429px,
+		total-height: 285px,
+		image: '../images/sprite.png'
+	),
+	pricing-custom: (
+		offset-x: -243px,
+		offset-y: -87px,
+		width: 72px,
+		height: 62px,
+		total-width: 429px,
+		total-height: 285px,
+		image: '../images/sprite.png'
+	),
+	rifeng-sign: (
+		offset-x: 0px,
+		offset-y: 0px,
+		width: 108px,
+		height: 65px,
+		total-width: 429px,
+		total-height: 285px,
+		image: '../images/sprite.png'
+	),
+);
+
+
+@mixin sprite-size($image) {
+	background-size: map-get(map-get($sprite, $image), 'total-width') map-get(map-get($sprite, $image), 'total-height');
+}
+
+@mixin sprite-width($image) {
+	width: map-get(map-get($sprite, $image), 'width');
+}
+
+@mixin sprite-height($image) {
+	height: map-get(map-get($sprite, $image), 'height');
+}
+
+@mixin sprite-position($image) {
+	background-position: map-get(map-get($sprite, $image), 'offset-x') map-get(map-get($sprite, $image), 'offset-y');
+}
+
+@mixin sprite-image($image) {
+	background-image: url(map-get(map-get($sprite, $image), 'image'));
+}
+
+@mixin sprite-image-retina($image) {
+	$image-path: map-get(map-get($sprite, $image), 'image');
+	$image-path-retina: str-slice($image-path, 1, str-index($image-path, '.png') - 1) + '@2x.png';
+
+	background-image: url($image-path-retina);
+}
+
+@mixin sprite($image, $size: true) {
+	@include sprite-image($image);
+	@include sprite-position($image);
+	background-repeat: no-repeat;
+
+	@if $size {
+		@include sprite-width($image);
+		@include sprite-height($image);
+	}
+
+	@media
+		only screen and (-webkit-min-device-pixel-ratio: 2),
+		only screen and (   min--moz-device-pixel-ratio: 2),
+		only screen and (     -o-min-device-pixel-ratio: 2/1),
+		only screen and (        min-device-pixel-ratio: 2),
+		only screen and (                min-resolution: 192dpi),
+		only screen and (                min-resolution: 2dppx) {
+
+		@include sprite-size($image);
+		@include sprite-image-retina($image);
+
+	}
+}
+
+
+
+	.icon-cabin-logo {
+		@include sprite(cabin-logo)
+	}
+	.icon-clientLogo-bbounce {
+		@include sprite(clientLogo-bbounce)
+	}
+	.icon-clientLogo-canny {
+		@include sprite(clientLogo-canny)
+	}
+	.icon-clientLogo-elements {
+		@include sprite(clientLogo-elements)
+	}
+	.icon-clientLogo-grain {
+		@include sprite(clientLogo-grain)
+	}
+	.icon-clientLogo-poh {
+		@include sprite(clientLogo-poh)
+	}
+	.icon-clientLogo-seventeen {
+		@include sprite(clientLogo-seventeen)
+	}
+	.icon-logo-ACCA {
+		@include sprite(logo-ACCA)
+	}
+	.icon-logo-ACRA {
+		@include sprite(logo-ACRA)
+	}
+	.icon-logo-ISCA {
+		@include sprite(logo-ISCA)
+	}
+	.icon-logo-Xero {
+		@include sprite(logo-Xero)
+	}
+	.icon-optionBox {
+		@include sprite(optionBox)
+	}
+	.icon-pricing-compliance {
+		@include sprite(pricing-compliance)
+	}
+	.icon-pricing-corporate {
+		@include sprite(pricing-corporate)
+	}
+	.icon-pricing-custom {
+		@include sprite(pricing-custom)
+	}
+	.icon-rifeng-sign {
+		@include sprite(rifeng-sign)
+	}
